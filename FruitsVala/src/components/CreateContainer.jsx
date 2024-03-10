@@ -84,7 +84,7 @@ const CreateContainer = () => {
   };
   const fetchData = async () => {
     axios
-      .get("https://fruitswala-version-2-1.onrender.com/getItems")
+      .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
@@ -125,7 +125,7 @@ const CreateContainer = () => {
     };
     const { data } = await axios
       .post(
-        "https://fruitswala-version-2-1.onrender.com/createItem",
+        "https://fruitswala-version-2-1-dqba.onrender.com/createItem",
 
         tempdata,
 

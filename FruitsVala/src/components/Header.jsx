@@ -16,7 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const logout1 = () => {
     axios
-      .get("https://fruitswala-version-2-1.onrender.com/logout")
+      .get("https://fruitswala-version-2-1-dqba.onrender.com/logout")
       .then((res) => {
         dispatch({
           type: actionType.SET_USER,

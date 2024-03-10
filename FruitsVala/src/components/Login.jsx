@@ -11,7 +11,10 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://fruitswala-version-2-1.onrender.com/login", { email, password })
+      .post("https://fruitswala-version-2-1-dqba.onrender.com/login", {
+        email,
+        password,
+      })
       .then((res) => {
         if (res.data === "Success") {
           window.location.href = "/";

@@ -22,7 +22,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
-      .get("https://fruitswala-version-2-1.onrender.com/getItems")
+      .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
@@ -37,10 +37,10 @@ const App = () => {
     fetchData();
   }, []);
   // useEffect(() => {}, [cartItems]);
-  
+
   useEffect(() => {
     axios
-      .get("https://fruitswala-version-2-1.onrender.com/")
+      .get("https://fruitswala-version-2-1-dqba.onrender.com/")
       .then((user1) => {
         dispatch({
           type: actionType.SET_USER,

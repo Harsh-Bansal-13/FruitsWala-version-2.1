@@ -12,7 +12,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://fruitswala-version-2-1.onrender.com/register", {
+      .post("https://fruitswala-version-2-1-dqba.onrender.com/register", {
         username,
         email,
         password,
