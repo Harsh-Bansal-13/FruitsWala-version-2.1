@@ -11,7 +11,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post("https://fruits-wala-version-2-1-backend.vercel.app/login", { email, password })
       .then((res) => {
         if (res.data === "Success") {
           window.location.href = "/";
