@@ -123,6 +123,7 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/getItems", (req, res) => {
+  console.log("Harsh");
   ItemModel.find()
     .then((items) => res.json(items))
     .catch((err) => res.json(err));
