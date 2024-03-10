@@ -21,7 +21,7 @@ const App = () => {
   const [{ cartItems }] = useStateValue();
   const fetchData = async () => {
     axios
-      .get("http://localhost:3001/getItems")
+      .get("https://fruits-wala-version-2-1-backend.vercel.app/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
