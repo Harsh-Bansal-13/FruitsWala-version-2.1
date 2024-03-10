@@ -132,7 +132,12 @@ app.post("/createItem", verifyUser, (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  res.clearCookie("fwa_auth_token");
+  res.clearCookie("fwa_auth_token", {
+    secure: true,
+    httpOnly: true,
+    sameSite: "none",
+    expires: new Date(0), // Set expiration date in the past to immediately expire the cookie
+  });
   return res.json("Success");
 });
 
