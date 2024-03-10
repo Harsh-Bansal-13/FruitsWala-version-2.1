@@ -19,6 +19,7 @@ export const userContext = createContext();
 const App = () => {
   const [{}, dispatch] = useStateValue();
   const [{ cartItems }] = useStateValue();
+  axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
       .get("https://fruits-wala-version-2-1-backend.vercel.app/getItems")
@@ -36,7 +37,7 @@ const App = () => {
     fetchData();
   }, []);
   // useEffect(() => {}, [cartItems]);
-  axios.defaults.withCredentials = true;
+  
   useEffect(() => {
     axios
       .get("https://fruits-wala-version-2-1-backend.vercel.app/")
