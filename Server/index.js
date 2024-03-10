@@ -98,7 +98,7 @@ app.post("/login", async (req, res) => {
         "jwt-secret-key",
         { expiresIn: "1d" }
       );
-      res.cookie("fwa_auth_token", token);
+      res.cookie("fwa_auth_token", token, { maxAge: 86400000 });
       return res.json("Success");
     } else {
       console.log("Incorrect Password");
@@ -127,7 +127,7 @@ app.post("/createItem", verifyUser, (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("fwa_auth_token");
   return res.json("Success");
 });
 
