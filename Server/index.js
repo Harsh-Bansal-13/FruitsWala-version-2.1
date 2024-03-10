@@ -12,6 +12,7 @@ const { type } = require("os");
 const fs = require("fs");
 const temp = require("dotenv").config();
 const port = process.env.PORT || 4000;
+const url = process.env.URL_MONGODB;
 const app = express();
 app.use(express.json());
 app.use(
@@ -23,9 +24,15 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.static("public"));
-mongoose.connect(
-  "mongodb+srv://harshbansal1717:Vlo11OVKEhJTqv3G@test-db.wgp7h9j.mongodb.net/?retryWrites=true&w=majority&appName=test-db"
-);
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log("Connected to MongoDB Atlas database");
+  })
+  .catch((err) => {
+    console.log("MongoDB Atlas server not connected");
+    console.error(err);
+  });
 
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
