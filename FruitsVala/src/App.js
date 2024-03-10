@@ -22,7 +22,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
-      .get("https://fruits-wala-version-2-1-backend.vercel.app/getItems")
+      .get("https://fruitswala-version-2-1.onrender.com/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
@@ -40,7 +40,7 @@ const App = () => {
   
   useEffect(() => {
     axios
-      .get("https://fruits-wala-version-2-1-backend.vercel.app/")
+      .get("https://fruitswala-version-2-1.onrender.com/")
       .then((user1) => {
         dispatch({
           type: actionType.SET_USER,
