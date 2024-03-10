@@ -30,6 +30,7 @@ mongoose
     console.log("Connected to MongoDB Atlas database");
   })
   .catch((err) => {
+    console.log(url);
     console.log("MongoDB Atlas server not connected");
     console.error(err);
   });
