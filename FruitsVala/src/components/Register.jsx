@@ -12,7 +12,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/register", {
+      .post("https://fruits-wala-version-2-1-backend.vercel.app/register", {
         username,
         email,
         password,
