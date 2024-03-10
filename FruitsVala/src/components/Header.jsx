@@ -16,7 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const logout1 = () => {
     axios
-      .get("http://localhost:3001/logout")
+      .get("https://fruits-wala-version-2-1-backend.vercel.app/logout")
       .then((res) => {
         dispatch({
           type: actionType.SET_USER,
