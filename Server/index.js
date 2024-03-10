@@ -17,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
+    // origin: ["http://localhost:3000"],
     origin: ["https://fruits-wala-version-2-1-frontend.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -36,7 +37,7 @@ mongoose
   });
 
 const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies.fwa_auth_token;
   if (!token) {
     return res.json("The token is missing");
   } else {
@@ -97,7 +98,7 @@ app.post("/login", async (req, res) => {
         "jwt-secret-key",
         { expiresIn: "1d" }
       );
-      res.cookie("token", token);
+      res.cookie("fwa_auth_token", token);
       return res.json("Success");
     } else {
       console.log("Incorrect Password");

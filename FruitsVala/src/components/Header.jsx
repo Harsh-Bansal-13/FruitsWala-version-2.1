@@ -16,6 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
   const logout1 = () => {
     axios
+      // .get("http://localhost:3001/logout")
       .get("https://fruitswala-version-2-1-dqba.onrender.com/logout")
       .then((res) => {
         dispatch({

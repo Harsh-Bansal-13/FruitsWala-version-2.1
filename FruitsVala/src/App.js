@@ -22,6 +22,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
+      // .get("http://localhost:3001/getItems")
       .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         dispatch({
@@ -40,6 +41,7 @@ const App = () => {
 
   useEffect(() => {
     axios
+      // .get("http://localhost:3001/")
       .get("https://fruitswala-version-2-1-dqba.onrender.com/")
       .then((user1) => {
         dispatch({
