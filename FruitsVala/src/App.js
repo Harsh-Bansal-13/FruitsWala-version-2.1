@@ -39,7 +39,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:3001/")
+      .get("https://fruits-wala-version-2-1-backend.vercel.app/")
       .then((user1) => {
         dispatch({
           type: actionType.SET_USER,
