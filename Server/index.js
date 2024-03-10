@@ -98,7 +98,7 @@ app.post("/login", async (req, res) => {
         "jwt-secret-key",
         { expiresIn: "1d" }
       );
-      res.cookie("fwa_auth_token", token, { maxAge: 86400000 });
+      res.cookie("fwa_auth_token", token);
       return res.json("Success");
     } else {
       console.log("Incorrect Password");
