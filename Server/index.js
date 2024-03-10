@@ -24,8 +24,20 @@ app.use(
 app.use(cookieParser());
 app.use(express.static("public"));
 mongoose.connect(
-  "mongodb+srv://harshbansal1717:Vlo11OVKEhJTqv3G@test-db.wgp7h9j.mongodb.net/?retryWrites=true&w=majority&appName=test-db"
-);
+  "mongodb+srv://harshbansal1717:Vlo11OVKEhJTqv3G@test-db.wgp7h9j.mongodb.net/?retryWrites=true&w=majority&appName=test-db",{},function(err,res)
+{
+        if(err)
+        {
+            console.log("mongo lab server not connected");
+            console.log(err);
+        }
+        else
+        {
+            // console.log(res);
+            console.log("Connectd to mongolab db");
+        }
+});
+
 
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
