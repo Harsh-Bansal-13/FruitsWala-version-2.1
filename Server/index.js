@@ -9,12 +9,14 @@ const path = require("path");
 const UserModel = require("./models/UserModel");
 const ItemModel = require("./models/ItemModel");
 const { type } = require("os");
-
+const fs = require("fs");
+const temp = require("dotenv").config();
+const port = process.env.PORT || 4000;
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://fruits-wala-version-2-1-frontend.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -125,6 +127,6 @@ app.get("/getItems", (req, res) => {
     .then((items) => res.json(items))
     .catch((err) => res.json(err));
 });
-app.listen(3001, () => {
-  console.log("Server is Running");
+app.listen(port, () => {
+  console.log("Server is Running", port);
 });
