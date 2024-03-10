@@ -23,20 +23,18 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.static("public"));
-mongoose.connect(
-  "mongodb+srv://harshbansal1717:Vlo11OVKEhJTqv3G@test-db.wgp7h9j.mongodb.net/?retryWrites=true&w=majority&appName=test-db",{},function(err,res)
-{
-        if(err)
-        {
-            console.log("mongo lab server not connected");
-            console.log(err);
-        }
-        else
-        {
-            // console.log(res);
-            console.log("Connectd to mongolab db");
-        }
-});
+mongoose
+  .connect(
+    "mongodb+srv://harshbansal1717:Vlo11OVKEhJTqv3G@test-db.wgp7h9j.mongodb.net/?retryWrites=true&w=majority&appName=test-db"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB Atlas database");
+  })
+  .catch((err) => {
+    console.log("MongoDB Atlas server not connected");
+    console.error(err);
+  });
+
 
 
 const verifyUser = (req, res, next) => {
