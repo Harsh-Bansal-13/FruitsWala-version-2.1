@@ -84,7 +84,7 @@ const CreateContainer = () => {
   };
   const fetchData = async () => {
     axios
-      .get("https://fruits-wala-version-2-1-backend.vercel.app/getItems")
+      .get("https://fruitswala-version-2-1.onrender.com/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
@@ -125,7 +125,7 @@ const CreateContainer = () => {
     };
     const { data } = await axios
       .post(
-        "https://fruits-wala-version-2-1-backend.vercel.app/createItem",
+        "https://fruitswala-version-2-1.onrender.com/createItem",
 
         tempdata,
 
