@@ -4,10 +4,10 @@ import F9 from "../images/f9.png";
 import F6 from "../images/f6.png";
 
 export const heroData = [
-  { id: 1, name: "StrawBerries", imageSrc: F1, price: "2.5" },
-  { id: 2, name: "Pineapple", imageSrc: F2, price: "1.75" },
-  { id: 3, name: "Banana", imageSrc: F9, price: "2" },
-  { id: 4, name: "Pomegranate", imageSrc: F6, price: "3" },
+  { id: 1, name: "StrawBerries", imageSrc: F1, price: "50" },
+  { id: 2, name: "Pineapple", imageSrc: F2, price: "50" },
+  { id: 3, name: "Banana", imageSrc: F9, price: "20" },
+  { id: 4, name: "Pomegranate", imageSrc: F6, price: "90" },
 ];
 
 export const categories = [
