@@ -58,28 +58,18 @@ const App = () => {
     // Check backend availability
     const checkBackend = async () => {
       try {
-        // Perform a request to a backend endpoint
-        const response = await fetch(
-          // "https://fruitswala-version-2-1-dqba.onrender.com/status"
-          // "http://localhost:3001/status"
-          "/api/status"
-        );
+        const response = await fetch("/api/status");
 
-        // Check if the response is OK
         if (response.ok) {
-          // If the request is successful, set loading to false
           setLoading(false);
         } else {
-          // Handle the case where the server returns an error
           throw new Error("Network response was not ok");
         }
       } catch (error) {
-        // Handle errors (e.g., backend server not available)
         console.error("Error checking backend status:", error);
       }
     };
 
-    // Call the checkBackend function
     checkBackend();
   }, []);
 

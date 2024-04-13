@@ -2,9 +2,12 @@ import React from "react";
 import Delivery from "../images/fruits-delivery-image-removebg.png";
 import Fruitsbg from "../images/background-image.jpg";
 import { heroData } from "../utils/data";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
+import HeroDataComp from "./HeroDataComp";
+
 const HomeContainer = () => {
+  const controls = useAnimation();
   return (
     <section
       className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full h-screen"
@@ -53,25 +56,7 @@ const HomeContainer = () => {
         />
         <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center py-4 gap-4 flex-wrap">
           {heroData &&
-            heroData.map((item) => (
-              <div
-                key={item.id}
-                className="w-[130px] md:w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-lg flex flex-col items-center justify-center drop-shadow-lg"
-              >
-                <img
-                  src={item.imageSrc}
-                  className="w-20 lg:w-40 -mt-10 lg:-mt-20"
-                  alt={item.name}
-                />
-                <p className="mt-2 lg:mt-4 text-sm lg:text-lg font-semibold text-textColor">
-                  {item.name}
-                </p>
-                <p className="text-xs font-semibold text-headingColor">
-                  <span className="text-sm text-red-600">₹ </span>
-                  {item.price}
-                </p>
-              </div>
-            ))}
+            heroData.map((item) => <HeroDataComp item={item}></HeroDataComp>)}
         </div>
       </div>
     </section>
