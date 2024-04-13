@@ -147,6 +147,9 @@ app.get("/getItems", (req, res) => {
     .then((items) => res.json(items))
     .catch((err) => res.json(err));
 });
+app.get("/status", (req, res) => {
+  res.status(200).json({ message: "Backend server is running." });
+});
 app.listen(port, () => {
   console.log("Server is Running", port);
 });
