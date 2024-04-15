@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(
   cors({
     // origin: ["http://localhost:3000"],
-    // origin: ["https://fruits-wala-version-2-1-frontend.vercel.app"],
     origin: ["https://fruits-wala.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -137,7 +136,7 @@ app.get("/logout", (req, res) => {
     secure: true,
     httpOnly: true,
     sameSite: "none",
-    expires: new Date(0), // Set expiration date in the past to immediately expire the cookie
+    expires: new Date(0),
   });
   return res.json("Success");
 });
@@ -149,7 +148,7 @@ app.get("/getItems", (req, res) => {
     .catch((err) => res.json(err));
 });
 app.get("/status", (req, res) => {
-  res.status(200).json({ message: "Backend server is running." });
+  res.status(200).json({ status: "ok", message: "Backend is running" });
 });
 app.listen(port, () => {
   console.log("Server is Running", port);

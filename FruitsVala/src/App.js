@@ -52,25 +52,22 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check backend availability
-    const checkBackend = async () => {
-      try {
-        const response = await fetch("/api/status");
-
-        if (response.ok) {
-          setLoading(false);
-        } else {
-          throw new Error("Network response was not ok");
+    // fetch("http://localhost:3001/status") // Your deployed backend URL
+    fetch("https://fruitswala-version-2-1-dqba.onrender.com/status") // Your deployed backend URL
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "ok") {
+          setLoading(false); // Hide loader and show your application
         }
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error("Error checking backend status:", error);
-      }
-    };
-
-    checkBackend();
+        // Handle error (show error message or retry)
+      });
   }, []);
 
   return (
