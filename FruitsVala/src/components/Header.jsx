@@ -218,13 +218,13 @@ const Header = () => {
                       className="px-4 py-2 flex items-center gap-3 cursor-pointer bg-purple-50 hover:bg-purple-100  transition-all duration-100 ease-in-out text-textColor text-base"
                       onClick={() => setisMenu(false)}
                     >
-                      Home
+                      <Link to={"/"}> Home</Link>
                     </li>
                     <li
                       className="px-4 py-2 flex items-center gap-3 cursor-pointer bg-purple-50 hover:bg-purple-100  transition-all duration-100 ease-in-out text-textColor text-base"
                       onClick={() => setisMenu(false)}
                     >
-                      Varieties
+                      <a href="#Menu">Varieties</a>
                     </li>
                     <li
                       className="px-4 py-2 flex items-center gap-3 cursor-pointer bg-purple-50 hover:bg-purple-100 transition-all duration-100 ease-in-out text-textColor text-base"
