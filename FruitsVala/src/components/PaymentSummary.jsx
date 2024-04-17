@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useStateValue } from "../context/StateProvider";
 import Loader from "./Loader";
 import EmptyCart from "../images/emptyCart.svg";
-
+import { loadStripe } from "@stripe/stripe-js";
 function PaymentSummary(props) {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
@@ -20,6 +20,54 @@ function PaymentSummary(props) {
       });
     setTot(harshTotal);
   }, [cartItems]);
+  // const makePayment = async () => {
+  //   const stripe = await loadStripe(
+  //     "pk_test_51P6ZwaSFp55C62QDgCZmchKr1ew30RigKUpqJhUH5gKUUcdifZ2TlnS59156d8SiC7l4olZnvYS4LL5qzbEBOAkS00RXwu3Jyi"
+  //   );
+  //   const body = {
+  //     products: cartItems,
+  //   };
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //   };
+  //   const response = await fetch(
+  //     "http://localhost:3001/create-checkout-session",
+  //     {
+  //       method: "POST",
+  //       headers: headers,
+  //       body: JSON.stringify(body),
+  //     }
+  //   );
+  //   const session = await response.json();
+  //   const result = stripe.redirectToCheckout({
+  //     sessionId: session.id,
+  //   });
+  // };
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51P6ZwaSFp55C62QDgCZmchKr1ew30RigKUpqJhUH5gKUUcdifZ2TlnS59156d8SiC7l4olZnvYS4LL5qzbEBOAkS00RXwu3Jyi"
+    );
+
+    const response = await axios.post(
+      "https://fruitswala-version-2-1-dqba.onrender.com/create-checkout-session",
+      // "http://localhost:3001/create-checkout-session",
+      {
+        products: cartItems,
+      }
+    );
+    console.log(response);
+    const sessionID = response.data.sessionId;
+    // console.log(sessionID, "HARSH");
+    const result = await stripe.redirectToCheckout({
+      sessionId: sessionID,
+    });
+
+    if (result.error) {
+      console.error("Error redirecting to checkout:", result.error);
+    }
+  };
+
+  console.log(cartItems);
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
       <div className="md:w-[30%] h-720 border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center gap-2 m-0 bg-purple-300">
@@ -36,7 +84,7 @@ function PaymentSummary(props) {
               {cartItems &&
                 cartItems.map((item) => (
                   <CartItem
-                    key={item?.id}
+                    key={item?._id}
                     item={item}
                     setFlag={setFlag}
                     flag={flag}
@@ -68,6 +116,7 @@ function PaymentSummary(props) {
                   type="button"
                   className="w-full p-2 rounded-full 
             bg-gradient-to-tr from-orange-400  to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+                  onClick={makePayment}
                 >
                   Pay Now
                 </motion.button>

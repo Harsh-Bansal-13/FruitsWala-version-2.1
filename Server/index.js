@@ -17,6 +17,7 @@ const createItem = require("./routes/createItem");
 const register = require("./routes/register");
 const logout = require("./routes/logout");
 const getItems = require("./routes/getItems");
+const stripePayment = require("./routes/stripePayment");
 const deleteItem = require("./routes/deleteItem");
 const status = require("./routes/status");
 const url = process.env.URL_MONGODB;
@@ -93,6 +94,7 @@ app.use("/createItem", createItem);
 app.use("/getItems", getItems);
 app.use("/deleteItem", deleteItem);
 app.use("/status", status);
+app.use("/create-checkout-session", stripePayment);
 
 // app.post("/login", async (req, res) => {
 //   try {

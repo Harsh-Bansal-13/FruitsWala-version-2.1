@@ -11,9 +11,11 @@ import { AnimatePresence } from "framer-motion";
 import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
 import Register from "./components/Register";
+import SuccessPayment from "./components/SuccessPayment";
 import Login from "./components/Login";
 import { createContext } from "react";
 import axios from "axios";
+import FailPayment from "./components/FailPayment";
 
 export const userContext = createContext();
 
@@ -104,6 +106,11 @@ const App = () => {
               <Route path="/createItem" element={<CreateContainer />}></Route>
               <Route path="/register" element={<Register />}></Route>
               <Route path="/login" element={<Login />}></Route>
+              <Route
+                path="/successPayment"
+                element={<SuccessPayment></SuccessPayment>}
+              ></Route>
+              <Route path="/failPayment" element={<FailPayment />}></Route>
               <Route
                 path="/paymentSummary"
                 element={<PaymentSummary />}

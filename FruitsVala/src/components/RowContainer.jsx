@@ -34,7 +34,7 @@ const RowContainer = ({ flag, data }) => {
   };
 
   const handleDeleteItem = async (deletedItemId) => {
-    console.log(deletedItemId);
+    // console.log(deletedItemId);
     const tempdata = {
       // id: `${Date.now()}`,
       deletedItemId: deletedItemId,
@@ -78,7 +78,7 @@ const RowContainer = ({ flag, data }) => {
     >
       {data && data.length > 0 ? (
         data.map((item) => {
-          console.log(item);
+          // console.log(item);
           return (
             <div
               key={item._id}
