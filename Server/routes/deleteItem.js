@@ -4,10 +4,8 @@ const ItemModel = require("../models/ItemModel");
 
 router.post("/", (req, res) => {
   const { deletedItemId } = req.body;
-  // console.log(req.body);
   ItemModel.findByIdAndDelete(deletedItemId)
     .then((deletedItem) => {
-      console.log(deletedItemId);
       if (!deletedItem) {
         // If no item was found with the given ID, send a 404 status
         return res.status(404).json({ error: "Item not found" });

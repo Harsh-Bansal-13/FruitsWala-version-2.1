@@ -22,8 +22,6 @@ const verifyUser = (req, res, next) => {
   }
 };
 router.post("/", verifyUser, (req, res) => {
-  console.log(req.body);
-  console.log("vansal");
   const { title, calories, price, category, imageAsset, quantity, userId } =
     req.body;
   ItemModel.create({
@@ -36,11 +34,9 @@ router.post("/", verifyUser, (req, res) => {
     userId,
   })
     .then((result) => {
-      console.log("hARSH");
       res.json("success");
     })
     .catch((err) => {
-      console.log(err);
       res.json(err);
     });
 });
