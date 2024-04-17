@@ -56,7 +56,7 @@ const MainContainer = () => {
         </div>
         <RowContainer
           flag={true}
-          data={foodItems?.filter((n) => n.category === "fruits")}
+          data={foodItems?.filter((n) => n.category === "fruits") || []}
         ></RowContainer>
       </section>
       <MenuContainer />

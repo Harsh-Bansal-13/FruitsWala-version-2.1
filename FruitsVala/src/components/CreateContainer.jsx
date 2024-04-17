@@ -22,7 +22,7 @@ const CreateContainer = () => {
   const [alertStatus, setAlertStatus] = useState("harsh");
   const [msg, setMsg] = useState(null);
   const [imageAsset, setImageAsset] = useState("");
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{ foodItems, user }, dispatch] = useStateValue();
   const postImage = (pics) => {
     setIsLoading(true);
     if (pics == undefined) {
@@ -116,15 +116,16 @@ const CreateContainer = () => {
       },
     };
     const tempdata = {
-      id: `${Date.now()}`,
+      // id: `${Date.now()}`,
       title: title,
       imageAsset: imageAsset,
       category: category,
       calories: calories,
       price: price,
       quantity: 1,
+      userId: user.id,
     };
-    const { data } = await axios
+    await axios
       .post(
         // "http://localhost:3001/createItem",
         "https://fruitswala-version-2-1-dqba.onrender.com/createItem",

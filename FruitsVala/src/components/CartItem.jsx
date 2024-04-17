@@ -26,7 +26,7 @@ const CartItem = ({ item, setFlag, flag, update }) => {
     } else {
       if (item.quantity === 1) {
         item.quantity = 1;
-        items = cartItems.filter((item) => item.id !== id);
+        items = cartItems?.filter((item) => item.id !== id);
         setFlag(flag + 1);
         cartDispatch();
       } else {

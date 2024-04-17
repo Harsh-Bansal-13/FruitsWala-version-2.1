@@ -24,7 +24,7 @@ const App = () => {
   const fetchData = async () => {
     axios
       // .get("http://localhost:3001/getItems")
-      
+
       .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         dispatch({
@@ -58,16 +58,32 @@ const App = () => {
 
   useEffect(() => {
     // fetch("http://localhost:3001/status") // Your deployed backend URL
-    fetch("https://fruitswala-version-2-1-dqba.onrender.com/status") // Your deployed backend URL
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "ok") {
+    //   // fetch("https://fruitswala-version-2-1-dqba.onrender.com/status") // Your deployed backend URL
+    //   .then((response) => {
+    //     console.log(response);
+    //     response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log("harsh", data);
+    //     if (data && data.status === "ok") {
+    //       setLoading(false); // Hide loader and show your application
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error checking backend status:", error);
+    //     // Handle error (show error message or retry)
+    //   });
+
+    axios
+      // .get("http://localhost:3001/status")
+      .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
+      .then(({ data }) => {
+        if (data && data.status === "ok") {
           setLoading(false); // Hide loader and show your application
         }
       })
-      .catch((error) => {
-        console.error("Error checking backend status:", error);
-        // Handle error (show error message or retry)
+      .catch((err) => {
+        console.log("Something went wrong");
       });
   }, []);
 
