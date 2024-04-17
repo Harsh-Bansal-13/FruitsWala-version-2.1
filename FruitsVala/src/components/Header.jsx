@@ -63,10 +63,10 @@ const Header = () => {
             className="flex items-center gap-4"
           >
             <li className="text-base text-textColor hover:text-gray-900 hover:transition-all ease-in-out cursor-pointer hover:border-b-2 border-gray-950">
-              Home
+              <Link to="/">Home</Link>
             </li>
             <li className="text-base text-textColor hover:text-gray-900 transition-all ease-in-out cursor-pointer hover:border-b-2 border-gray-950">
-              Varieties
+              <a href="#Menu">Varieties</a>
             </li>
             <li className="text-base text-textColor hover:text-gray-900 transition-all ease-in-out cursor-pointer hover:border-b-2 border-gray-950">
               About us
