@@ -14,7 +14,7 @@ const CartItem = ({ item, setFlag, flag, update }) => {
       cartItems: items,
     });
   };
-  const addCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user.id}`;
+  const addCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user?.id}`;
   // const addCartUrl = `http://localhost:3001/add-cart-item/${user.id}`;
   const config = {
     headers: {
