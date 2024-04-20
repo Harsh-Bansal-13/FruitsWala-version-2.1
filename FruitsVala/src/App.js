@@ -16,12 +16,13 @@ import Login from "./components/Login";
 import { createContext } from "react";
 import axios from "axios";
 import FailPayment from "./components/FailPayment";
+import Profile from "./components/Profile";
 
 export const userContext = createContext();
 
 const App = () => {
   const [{}, dispatch] = useStateValue();
-  const [{ cartItems }] = useStateValue();
+  const [{ cartItems, user }] = useStateValue();
   axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
@@ -29,9 +30,27 @@ const App = () => {
 
       .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
+        // console.log(items);
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
           foodItems: items.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const fetchCartData = async (_id) => {
+    axios
+      .get(
+        `https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`
+      )
+      // .get(`http://localhost:3001/get-cart-item/${_id}`)
+      .then((items) => {
+        console.log(items);
+        dispatch({
+          type: actionType.SET_CARTITEMS,
+          cartItems: items.data.cartItems,
         });
       })
       .catch((err) => {
@@ -52,6 +71,7 @@ const App = () => {
           type: actionType.SET_USER,
           user: user1.data,
         });
+        fetchCartData(user1.data.id);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -111,6 +131,7 @@ const App = () => {
                 element={<SuccessPayment></SuccessPayment>}
               ></Route>
               <Route path="/failPayment" element={<FailPayment />}></Route>
+              <Route path="/profile" element={<Profile />}></Route>
               <Route
                 path="/paymentSummary"
                 element={<PaymentSummary />}

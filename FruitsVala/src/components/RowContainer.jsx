@@ -13,6 +13,8 @@ const RowContainer = ({ flag, data }) => {
   // const [deletedItemId, setdeletedItemId] = useState("");
   axios.defaults.withCredentials = true;
   const [{ cartItems, foodItems, user }, dispatch] = useStateValue();
+  const url = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user.id}`;
+  // const url = `http://localhost:3001/add-cart-item/${user.id}`;
   const fetchData = async () => {
     axios
       // .get("http://localhost:3001/getItems")
@@ -105,6 +107,16 @@ const RowContainer = ({ flag, data }) => {
                         item1.quantity += 1;
                       }
                     });
+                    const fruitItemId = { itemId: item?._id };
+                    // console.log(url);
+                    axios
+                      .post(url, fruitItemId, config)
+                      .then((res) => {
+                        // console.log(res.message);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
                     if (flag) {
                       setItems([...cartItems]); // Updating the state with the modified cartItems
                     } else {

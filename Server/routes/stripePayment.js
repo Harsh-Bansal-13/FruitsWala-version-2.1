@@ -25,9 +25,9 @@ router.post("/", async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      //   success_url: "http://localhost:3000/successPayment",
+      // success_url: "http://localhost:3000/successPayment",
       success_url: "https://fruits-wala.vercel.app/successPayment",
-      //   cancel_url: "http://localhost:3000/failPayment",
+      // cancel_url: "http://localhost:3000/failPayment",
       cancel_url: "https://fruits-wala.vercel.app/failPayment",
     });
     // console.log("H12233arsh");

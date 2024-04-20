@@ -3,27 +3,56 @@ import { BiMinus, BiPlus } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+import axios from "axios";
 let items = [];
 const CartItem = ({ item, setFlag, flag, update }) => {
   const tempItem = item;
-  const [{ cartItems }, dispatch] = useStateValue();
+  const [{ cartItems, user }, dispatch] = useStateValue();
   const cartDispatch = () => {
     dispatch({
       type: actionType.SET_CARTITEMS,
       cartItems: items,
     });
   };
-
+  const addCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user.id}`;
+  // const addCartUrl = `http://localhost:3001/add-cart-item/${user.id}`;
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
   const updateQty = (action, id) => {
     if (action == "add") {
       cartItems.map((item) => {
         if (item.id === id) {
+          // console.log(item);
+          const fruitItemId = { itemId: item._id };
+          // console.log(addCartUrl);
+          axios
+            .post(addCartUrl, fruitItemId, config)
+            .then((res) => {
+              console.log(res.message);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           item.quantity += 1;
           setFlag(flag + 1);
         }
       });
       cartDispatch();
     } else {
+      const deleteCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/delete-cart-item/${user.id}/items/${item._id}`;
+      // const deleteCartUrl = `http://localhost:3001/delete-cart-item/${user.id}/items/${item._id}`;
+      console.log(deleteCartUrl);
+      axios
+        .post(deleteCartUrl)
+        .then((res) => {
+          console.log(res.message);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       if (item.quantity === 1) {
         item.quantity = 1;
         items = cartItems?.filter((item) => item.id !== id);
