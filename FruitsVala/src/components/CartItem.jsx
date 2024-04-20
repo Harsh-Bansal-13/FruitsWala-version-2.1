@@ -42,7 +42,7 @@ const CartItem = ({ item, setFlag, flag, update }) => {
       });
       cartDispatch();
     } else {
-      const deleteCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/delete-cart-item/${user.id}/items/${item._id}`;
+      const deleteCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/delete-cart-item/${user?.id}/items/${item._id}`;
       // const deleteCartUrl = `http://localhost:3001/delete-cart-item/${user.id}/items/${item._id}`;
       console.log(deleteCartUrl);
       axios
