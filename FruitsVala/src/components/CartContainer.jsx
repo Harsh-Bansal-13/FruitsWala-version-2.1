@@ -38,7 +38,7 @@ const CartContainer = () => {
     });
     axios
       .delete(
-        `https://fruitswala-version-2-1-dqba.onrender.com/empty-cart/${user.id}`
+        `https://fruitswala-version-2-1-dqba.onrender.com/empty-cart/${user?.id}`
       )
       // .delete(`http://localhost:3001/empty-cart/${user.id}`)
       .then((response) => {
