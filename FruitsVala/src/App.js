@@ -71,7 +71,7 @@ const App = () => {
           type: actionType.SET_USER,
           user: user1.data,
         });
-        fetchCartData(user1.data.id);
+        if (user1) fetchCartData(user1?.data?.id);
       })
       .catch((err) => console.log(err));
   }, []);
