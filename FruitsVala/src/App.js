@@ -42,7 +42,7 @@ const App = () => {
       });
   };
   const fetchCartData = async (_id) => {
-    axios.get`https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`()
+    axios.get(`https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`)
       // .get(`http://localhost:3001/get-cart-item/${_id}`)
       .then((items) => {
         console.log(items);
