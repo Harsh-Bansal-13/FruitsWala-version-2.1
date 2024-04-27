@@ -62,7 +62,7 @@ const CreateContainer = () => {
           }, 4000);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           setIsLoading(false);
         });
     } else {
@@ -93,7 +93,7 @@ const CreateContainer = () => {
         });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
   const saveDetails = async () => {

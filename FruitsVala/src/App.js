@@ -17,6 +17,7 @@ import { createContext } from "react";
 import axios from "axios";
 import FailPayment from "./components/FailPayment";
 import Profile from "./components/Profile";
+import EmailVerify from "./components/EmailVerify";
 
 export const userContext = createContext();
 
@@ -41,10 +42,7 @@ const App = () => {
       });
   };
   const fetchCartData = async (_id) => {
-    axios
-      .get(
-        `https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`
-      )
+    axios.get`https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`()
       // .get(`http://localhost:3001/get-cart-item/${_id}`)
       .then((items) => {
         console.log(items);
@@ -135,6 +133,10 @@ const App = () => {
               <Route
                 path="/paymentSummary"
                 element={<PaymentSummary />}
+              ></Route>
+              <Route
+                path="/register/:id/verify/:token"
+                element={<EmailVerify />}
               ></Route>
             </Routes>
           </main>

@@ -15,7 +15,7 @@ const CartItem = ({ item, setFlag, flag, update }) => {
     });
   };
   const addCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user?.id}`;
-  // const addCartUrl = `http://localhost:3001/add-cart-item/${user.id}`;
+  // const addCartUrl = `http://localhost:3001/add-cart-item/${user?.id}`;
   const config = {
     headers: {
       "Content-type": "application/json",
@@ -31,10 +31,10 @@ const CartItem = ({ item, setFlag, flag, update }) => {
           axios
             .post(addCartUrl, fruitItemId, config)
             .then((res) => {
-              console.log(res.message);
+              // console.log(res.message);
             })
             .catch((err) => {
-              console.log(err);
+              // console.log(err);
             });
           item.quantity += 1;
           setFlag(flag + 1);
@@ -43,15 +43,15 @@ const CartItem = ({ item, setFlag, flag, update }) => {
       cartDispatch();
     } else {
       const deleteCartUrl = `https://fruitswala-version-2-1-dqba.onrender.com/delete-cart-item/${user?.id}/items/${item._id}`;
-      // const deleteCartUrl = `http://localhost:3001/delete-cart-item/${user.id}/items/${item._id}`;
-      console.log(deleteCartUrl);
+      // const deleteCartUrl = `http://localhost:3001/delete-cart-item/${user?.id}/items/${item._id}`;
+      // console.log(deleteCartUrl);
       axios
         .post(deleteCartUrl)
         .then((res) => {
-          console.log(res.message);
+          // console.log(res.message);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
       if (item.quantity === 1) {
         item.quantity = 1;

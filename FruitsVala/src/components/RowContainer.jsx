@@ -14,7 +14,7 @@ const RowContainer = ({ flag, data }) => {
   axios.defaults.withCredentials = true;
   const [{ cartItems, foodItems, user }, dispatch] = useStateValue();
   const url = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user?.id}`;
-  // const url = `http://localhost:3001/add-cart-item/${user.id}`;
+  // const url = `http://localhost:3001/add-cart-item/${user?.id}`;
   const fetchData = async () => {
     axios
       // .get("http://localhost:3001/getItems")
