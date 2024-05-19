@@ -49,7 +49,8 @@ function PaymentSummary(props) {
     );
 
     const response = await axios.post(
-      "https://fruitswala-version-2-1-dqba.onrender.com/create-checkout-session",
+      "https://fruitswala.onrender.com/create-checkout-session",
+      // "https://fruitswala-version-2-1-dqba.onrender.com/create-checkout-session",
       // "http://localhost:3001/create-checkout-session",
       {
         products: cartItems,

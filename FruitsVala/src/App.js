@@ -29,7 +29,8 @@ const App = () => {
     axios
       // .get("http://localhost:3001/getItems")
 
-      .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
+      .get("https://fruitswala.onrender.com/getItems")
+      // .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         // console.log(items);
         dispatch({
@@ -42,7 +43,11 @@ const App = () => {
       });
   };
   const fetchCartData = async (_id) => {
-    axios.get(`https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`)
+    axios
+      .get(
+        `https://fruitswala.onrender.com/get-cart-item/${_id}`
+        // `https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`
+      )
       // .get(`http://localhost:3001/get-cart-item/${_id}`)
       .then((items) => {
         console.log(items);
@@ -63,7 +68,8 @@ const App = () => {
   useEffect(() => {
     axios
       // .get("http://localhost:3001/")
-      .get("https://fruitswala-version-2-1-dqba.onrender.com/")
+      .get("https://fruitswala.onrender.com/")
+      // .get("https://fruitswala-version-2-1-dqba.onrender.com/")
       .then((user1) => {
         dispatch({
           type: actionType.SET_USER,
@@ -77,26 +83,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // fetch("http://localhost:3001/status") // Your deployed backend URL
-    //   // fetch("https://fruitswala-version-2-1-dqba.onrender.com/status") // Your deployed backend URL
-    //   .then((response) => {
-    //     console.log(response);
-    //     response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log("harsh", data);
-    //     if (data && data.status === "ok") {
-    //       setLoading(false); // Hide loader and show your application
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error checking backend status:", error);
-    //     // Handle error (show error message or retry)
-    //   });
-
     axios
       // .get("http://localhost:3001/status")
-      .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
+      // .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
+      .get("https://fruitswala.onrender.com/status")
       .then(({ data }) => {
         if (data && data.status === "ok") {
           setLoading(false); // Hide loader and show your application

@@ -13,12 +13,14 @@ const RowContainer = ({ flag, data }) => {
   // const [deletedItemId, setdeletedItemId] = useState("");
   axios.defaults.withCredentials = true;
   const [{ cartItems, foodItems, user }, dispatch] = useStateValue();
-  const url = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user?.id}`;
+  const url = `https://fruitswala.onrender.com/add-cart-item/${user?.id}`;
+  // const url = `https://fruitswala-version-2-1-dqba.onrender.com/add-cart-item/${user?.id}`;
   // const url = `http://localhost:3001/add-cart-item/${user?.id}`;
   const fetchData = async () => {
     axios
       // .get("http://localhost:3001/getItems")
-      .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
+      .get("https://fruitswala.onrender.com/getItems")
+      // .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
@@ -44,7 +46,8 @@ const RowContainer = ({ flag, data }) => {
     await axios
       .post(
         // "http://localhost:3001/deleteItem",
-        "https://fruitswala-version-2-1-dqba.onrender.com/deleteItem",
+        "https://fruitswala.onrender.com/deleteItem",
+        // "https://fruitswala-version-2-1-dqba.onrender.com/deleteItem",
 
         tempdata,
 

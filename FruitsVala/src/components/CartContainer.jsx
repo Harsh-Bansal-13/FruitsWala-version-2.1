@@ -36,7 +36,8 @@ const CartContainer = () => {
       type: actionType.SET_CARTITEMS,
       cartItems: [],
     });
-    axios.delete`https://fruitswala-version-2-1-dqba.onrender.com/empty-cart/${user?.id}`()
+    axios.delete`https://fruitswala.onrender.com/empty-cart/${user?.id}`()
+      // axios.delete`https://fruitswala-version-2-1-dqba.onrender.com/empty-cart/${user?.id}`()
       // .delete(`http://localhost:3001/empty-cart/${user?.id}`)
       .then((response) => {
         // console.log("Cart items deleted successfully");

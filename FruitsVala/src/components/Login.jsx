@@ -20,7 +20,8 @@ function Login() {
     setIsLoading(true);
     axios
       // .post("http://localhost:3001/login", {
-      .post("https://fruitswala-version-2-1-dqba.onrender.com/login", {
+      // .post("https://fruitswala-version-2-1-dqba.onrender.com/login", {
+      .post("https://fruitswala.onrender.com/login", {
         email,
         password,
       })

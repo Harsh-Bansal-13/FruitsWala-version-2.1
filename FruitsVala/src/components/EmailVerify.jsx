@@ -12,7 +12,8 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `https://fruitswala-version-2-1-dqba.onrender.com/register/${param.id}/verify/${param.token}`;
+        // const url = `https://fruitswala-version-2-1-dqba.onrender.com/register/${param.id}/verify/${param.token}`;
+        const url = `https://fruitswala.onrender.com/register/${param.id}/verify/${param.token}`;
         // const url = `http://localhost:3001/register/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         // console.log(data);
