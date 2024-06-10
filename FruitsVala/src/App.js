@@ -82,56 +82,30 @@ const App = () => {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios
-      // .get("http://localhost:3001/status")
-      // .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
-      .get("https://fruitswala.onrender.com/status")
-      .then(({ data }) => {
-        if (data && data.status === "ok") {
-          setLoading(false); // Hide loader and show your application
-        }
-      })
-      .catch((err) => {
-        console.log("Something went wrong");
-      });
-  }, []);
-
   return (
     <AnimatePresence>
-      {loading ? (
-        <div className="w-full justify-center flex items-end h-screen">
-          <div className="my-auto">
-            <Loader></Loader>
-          </div>
-        </div>
-      ) : (
-        <div className="w-screen h-auto flex flex-col bg-purple-100">
-          <Header></Header>
-          <main className="mt-24 p-6 md:mt-10 md:px-16 w-full ">
-            <Routes>
-              <Route path="/*" element={<MainContainer />}></Route>
-              <Route path="/createItem" element={<CreateContainer />}></Route>
-              <Route path="/register" element={<Register />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route
-                path="/successPayment"
-                element={<SuccessPayment></SuccessPayment>}
-              ></Route>
-              <Route path="/failPayment" element={<FailPayment />}></Route>
-              <Route path="/profile" element={<Profile />}></Route>
-              <Route
-                path="/paymentSummary"
-                element={<PaymentSummary />}
-              ></Route>
-              <Route
-                path="/register/:id/verify/:token"
-                element={<EmailVerify />}
-              ></Route>
-            </Routes>
-          </main>
-        </div>
-      )}
+      <div className="w-screen h-auto flex flex-col bg-purple-100">
+        <Header></Header>
+        <main className="mt-24 p-6 md:mt-10 md:px-16 w-full ">
+          <Routes>
+            <Route path="/*" element={<MainContainer />}></Route>
+            <Route path="/createItem" element={<CreateContainer />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route
+              path="/successPayment"
+              element={<SuccessPayment></SuccessPayment>}
+            ></Route>
+            <Route path="/failPayment" element={<FailPayment />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/paymentSummary" element={<PaymentSummary />}></Route>
+            <Route
+              path="/register/:id/verify/:token"
+              element={<EmailVerify />}
+            ></Route>
+          </Routes>
+        </main>
+      </div>
     </AnimatePresence>
   );
 };

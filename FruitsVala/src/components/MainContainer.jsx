@@ -6,14 +6,29 @@ import { useStateValue } from "../context/StateProvider";
 import RowContainer from "./RowContainer";
 import MenuContainer from "./MenuContainer";
 import CartContainer from "./CartContainer";
+import Loader from "./Loader";
 const MainContainer = () => {
   const [{ foodItems, cartShow }, dispatch] = useStateValue();
 
   // const [scrollValue, setScrollValue] = useState(0);
   // const [scroll, setScroll] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {}, [cartShow, foodItems]);
-
+  useEffect(() => {
+    axios
+      // .get("http://localhost:3001/status")
+      // .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
+      .get("https://fruitswala.onrender.com/status")
+      .then(({ data }) => {
+        if (data && data.status === "ok") {
+          setLoading(false); // Hide loader and show your application
+        }
+      })
+      .catch((err) => {
+        console.log("Something went wrong");
+      });
+  }, []);
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center">
       <HomeContainer />
@@ -54,12 +69,28 @@ const MainContainer = () => {
             </motion.div>
           </div> */}
         </div>
-        <RowContainer
-          flag={true}
-          data={foodItems?.filter((n) => n.category === "fruits") || []}
-        ></RowContainer>
+        {loading ? (
+          <div className="w-full justify-center flex items-end h-screen">
+            <div className="my-auto">
+              <Loader></Loader>
+            </div>
+          </div>
+        ) : (
+          <RowContainer
+            flag={true}
+            data={foodItems?.filter((n) => n.category === "fruits") || []}
+          ></RowContainer>
+        )}
       </section>
-      <MenuContainer />
+      {loading ? (
+        <div className="w-full justify-center flex items-end h-screen">
+          <div className="my-auto">
+            <Loader></Loader>
+          </div>
+        </div>
+      ) : (
+        <MenuContainer />
+      )}
       {cartShow && <CartContainer />}
     </div>
   );
