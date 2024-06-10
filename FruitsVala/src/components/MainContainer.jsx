@@ -7,6 +7,7 @@ import RowContainer from "./RowContainer";
 import MenuContainer from "./MenuContainer";
 import CartContainer from "./CartContainer";
 import Loader from "./Loader";
+import axios from "axios";
 const MainContainer = () => {
   const [{ foodItems, cartShow }, dispatch] = useStateValue();
 
