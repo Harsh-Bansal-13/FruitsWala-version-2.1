@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/:path*",
-        "destination": "https://fruitswala.onrender.com/:path*"
+        "destination": "https://fruits-wala-version-2-1.vercel.app/:path*"
       }
     ]
   }
