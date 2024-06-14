@@ -5,7 +5,6 @@ router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Find and delete the cart item by user id
     const deletedCartItem = await CartItemModel.findOneAndDelete({ id });
 
     if (!deletedCartItem) {

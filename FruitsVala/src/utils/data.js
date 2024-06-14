@@ -42,3 +42,6 @@ export const categories = [
     class: "group-hover:text-textColor text-lg fi fi-ss-drink-alt",
   },
 ];
+
+// .get("https://fruitswala.onrender.com/")
+// .get("https://fruitswala-version-2-1-dqba.onrender.com/")

@@ -7,6 +7,7 @@ const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
+const base_url_frontend = process.env.BASE_URL_FRONTEND;
 router.use(cookieParser());
 router.post("/", async (req, res) => {
   try {
@@ -28,12 +29,10 @@ router.post("/", async (req, res) => {
             userId: user._id,
             token: crypto.randomBytes(32).toString("hex"),
           }).save();
-          const url = `https://fruits-wala.vercel.app/register/${user.id}/verify/${token.token}`;
-          // const url = `http://localhost:3000/register/${user.id}/verify/${token.token}`;
+          const url = `${base_url_frontend}register/${user.id}/verify/${token.token}`;
           sendEmail(user.email, "Verify Email", url);
         }
-        const url = `https://fruits-wala.vercel.app/register/${user.id}/verify/${token.token}`;
-        // const url = `http://localhost:3000/register/${user.id}/verify/${token.token}`;
+        const url = `${base_url_frontend}register/${user.id}/verify/${token.token}`;
         sendEmail(user.email, "Verify Email", url);
         return res.status(200).json("An Email Send Successfully");
       }

@@ -2,12 +2,10 @@ const router = require("express").Router();
 const cookieParser = require("cookie-parser");
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
+const base_url_frontend = process.env.BASE_URL_FRONTEND;
 router.post("/", async (req, res) => {
-  //   console.log(process.env.STRIPE_SECRET_KEY);
-  //   console.log("1233");
   const { products } = req.body;
-  //   console.log(products);
+
   const lineItems = products.map((product) => ({
     price_data: {
       currency: "INR",
@@ -19,19 +17,14 @@ router.post("/", async (req, res) => {
     },
     quantity: product.quantity,
   }));
-  //   console.log(lineItems);
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      // success_url: "http://localhost:3000/successPayment",
-      success_url: "https://fruits-wala.vercel.app/successPayment",
-      // cancel_url: "http://localhost:3000/failPayment",
-      cancel_url: "https://fruits-wala.vercel.app/failPayment",
+      success_url: `${base_url_frontend}successPayment`,
+      cancel_url: `${base_url_frontend}failPayment`,
     });
-    // console.log("H12233arsh");
-    // console.log(session);
     res.json({ sessionId: session.id });
   } catch (error) {
     console.error("Error creating checkout session:", error);

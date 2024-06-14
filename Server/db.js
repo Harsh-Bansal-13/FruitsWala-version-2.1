@@ -13,3 +13,4 @@ module.exports = () => {
     console.log("Could not connect database!");
   }
 };
+// BASE_URL_FRONTEND= http://localhost:3000/

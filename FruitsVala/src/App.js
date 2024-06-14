@@ -23,16 +23,12 @@ export const userContext = createContext();
 
 const App = () => {
   const [{}, dispatch] = useStateValue();
-  const [{ cartItems, user }] = useStateValue();
   axios.defaults.withCredentials = true;
   const fetchData = async () => {
     axios
-      // .get("http://localhost:3001/getItems")
+      .get("/getItems")
 
-      .get("https://fruitswala.onrender.com/getItems")
-      // .get("https://fruitswala-version-2-1-dqba.onrender.com/getItems")
       .then((items) => {
-        // console.log(items);
         dispatch({
           type: actionType.SET_FOOD_ITEMS,
           foodItems: items.data,
@@ -44,11 +40,7 @@ const App = () => {
   };
   const fetchCartData = async (_id) => {
     axios
-      .get(
-        `https://fruitswala.onrender.com/get-cart-item/${_id}`
-        // `https://fruitswala-version-2-1-dqba.onrender.com/get-cart-item/${_id}`
-      )
-      // .get(`http://localhost:3001/get-cart-item/${_id}`)
+      .get(`/get-cart-item/${_id}`)
       .then((items) => {
         console.log(items);
         dispatch({
@@ -63,13 +55,10 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  // useEffect(() => {}, [cartItems]);
 
   useEffect(() => {
     axios
-      // .get("http://localhost:3001/")
-      .get("https://fruitswala.onrender.com/")
-      // .get("https://fruitswala-version-2-1-dqba.onrender.com/")
+      .get("/api")
       .then((user1) => {
         dispatch({
           type: actionType.SET_USER,
@@ -79,8 +68,6 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  const [loading, setLoading] = useState(true);
 
   return (
     <AnimatePresence>

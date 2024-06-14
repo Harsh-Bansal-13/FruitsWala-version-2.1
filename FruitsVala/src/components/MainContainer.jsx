@@ -18,9 +18,7 @@ const MainContainer = () => {
   useEffect(() => {}, [cartShow, foodItems]);
   useEffect(() => {
     axios
-      // .get("http://localhost:3001/status")
-      // .get("https://fruitswala-version-2-1-dqba.onrender.com/status")
-      .get("https://fruitswala.onrender.com/status")
+      .get("/status")
       .then(({ data }) => {
         if (data && data.status === "ok") {
           setLoading(false); // Hide loader and show your application

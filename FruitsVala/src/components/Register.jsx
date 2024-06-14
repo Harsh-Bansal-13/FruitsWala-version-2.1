@@ -21,9 +21,7 @@ function Register() {
     e.preventDefault();
     setIsLoading(true);
     axios
-      // .post("http://localhost:3001/register", {
-      // .post("https://fruitswala-version-2-1-dqba.onrender.com/register", {
-      .post("https://fruitswala.onrender.com/register", {
+      .post("/register", {
         username,
         email,
         password,

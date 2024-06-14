@@ -5,7 +5,6 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Find the cart item by user id
     const cartItem = await CartItemModel.findOne({ id });
 
     if (!cartItem) {

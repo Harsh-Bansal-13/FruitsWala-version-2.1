@@ -2,6 +2,7 @@
   "name": "fruits-wala",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@fruits-chain/icons-react-native": "^0.1.2",
     "@google-pay/button-react": "^3.0.10",

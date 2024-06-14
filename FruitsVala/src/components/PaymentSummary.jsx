@@ -20,45 +20,17 @@ function PaymentSummary(props) {
       });
     setTot(harshTotal);
   }, [cartItems]);
-  // const makePayment = async () => {
-  //   const stripe = await loadStripe(
-  //     "pk_test_51P6ZwaSFp55C62QDgCZmchKr1ew30RigKUpqJhUH5gKUUcdifZ2TlnS59156d8SiC7l4olZnvYS4LL5qzbEBOAkS00RXwu3Jyi"
-  //   );
-  //   const body = {
-  //     products: cartItems,
-  //   };
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //   };
-  //   const response = await fetch(
-  //     "http://localhost:3001/create-checkout-session",
-  //     {
-  //       method: "POST",
-  //       headers: headers,
-  //       body: JSON.stringify(body),
-  //     }
-  //   );
-  //   const session = await response.json();
-  //   const result = stripe.redirectToCheckout({
-  //     sessionId: session.id,
-  //   });
-  // };
+
   const makePayment = async () => {
     const stripe = await loadStripe(
       "pk_test_51P6ZwaSFp55C62QDgCZmchKr1ew30RigKUpqJhUH5gKUUcdifZ2TlnS59156d8SiC7l4olZnvYS4LL5qzbEBOAkS00RXwu3Jyi"
     );
 
-    const response = await axios.post(
-      "https://fruitswala.onrender.com/create-checkout-session",
-      // "https://fruitswala-version-2-1-dqba.onrender.com/create-checkout-session",
-      // "http://localhost:3001/create-checkout-session",
-      {
-        products: cartItems,
-      }
-    );
+    const response = await axios.post("/create-checkout-session", {
+      products: cartItems,
+    });
     console.log(response);
     const sessionID = response.data.sessionId;
-    // console.log(sessionID, "HARSH");
     const result = await stripe.redirectToCheckout({
       sessionId: sessionID,
     });

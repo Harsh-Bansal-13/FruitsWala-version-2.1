@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+const base_url_frontend = process.env.BASE_URL_FRONTEND;
 
 router.post("/", async (req, res) => {
   try {
@@ -25,8 +26,7 @@ router.post("/", async (req, res) => {
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-    const url = `https://fruits-wala.vercel.app/register/${user.id}/verify/${token.token}`;
-    // const url = `http://localhost:3000/register/${user.id}/verify/${token.token}`;
+    const url = `${base_url_frontend}register/${user.id}/verify/${token.token}`;
     await sendEmail(user.email, "Verify Email", url);
     res
       .status(201)
@@ -36,16 +36,6 @@ router.post("/", async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
-
-// bcrypt
-//   .hash(password, 10)
-//   .then((hash) => {
-//     UserModel.create({ username, email, password: hash, isSeller })
-//       .then((user) => res.json(user))
-//       .catch((err) => res.json(err));
-//   })
-//   .catch((err) => console.log(err));
-// });
 
 router.get("/:id/verify/:token/", async (req, res) => {
   try {
